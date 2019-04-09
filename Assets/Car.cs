@@ -8,9 +8,15 @@ public class Car : MonoBehaviour {
     // car 
     public Rigidbody rb;
     public float maxSpeed;
+
+    public float backSpeed;
     public float maxSpeedReal;
     public float sandSpeed;
     public float speed;
+    
+    public float Aceleration;
+
+    public int playerNumber;   // 1 player 
 
     // race
     public bool isStart;
@@ -51,13 +57,59 @@ public class Car : MonoBehaviour {
 
         else
         {
-           
+           if (playerNumber == 1){
+            transform.Translate(speed, 0, 0);
+            if (Input.GetKey(KeyCode.W))
+            {
+                if (speed <= maxSpeed)
+                {
+                    speed += Aceleration;
+                    //rb.AddForce(Vector3.forward *-200f);
+                }
+
+                //rb.AddForce(Vector3.right *200f);
+
+            }
+            else if (speed > 0)
+            {
+                speed -= .01f;
+            }
+
+
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                //if (speed > 0)
+                //{
+                    speed -= Aceleration;
+                //}
+
+                transform.Translate(-1, 0, 0);
+                //rb.AddForce(Vector3.left * 50f);
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(0, -1, 0);
+                //rb.AddForce(Vector3.left *-200f);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(0, 1, 0);
+                //rb.AddForce(Vector3.right *-200f);
+            }
+
+
+
+           }
+           if (playerNumber == 2){
             transform.Translate(speed, 0, 0);
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 if (speed <= maxSpeed)
                 {
-                    speed += .01f;
+                    speed += Aceleration;
                 }
 
                 //rb.AddForce(Vector3.right *200f);
@@ -72,10 +124,10 @@ public class Car : MonoBehaviour {
 
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                if (speed > 0)
-                {
-                    speed -= .01f;
-                }
+                //if (speed > 0)
+                //{
+                    speed -= Aceleration;
+                //}
 
                 //transform.Translate(-1, 0, 0);
                 //rb.AddForce(Vector3.left * 50f);
@@ -91,9 +143,20 @@ public class Car : MonoBehaviour {
                 transform.Rotate(0, 1, 0);
             }
 
+
+
+           }
+            
+
             // out of the road !
             if (speed > maxSpeed) {
                 speed = maxSpeed;
+            }
+            if (speed > maxSpeed) {
+                speed = maxSpeed;
+            }
+            if (speed < backSpeed){
+                speed = backSpeed;
             }
         }
 
@@ -143,9 +206,9 @@ public class Car : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Collisor") && speed > 1) { 
+        /*if (collision.gameObject.CompareTag("Collisor") && speed > 1) { 
             speed = -1;
-        }
+        }*/
     }
 }
 
