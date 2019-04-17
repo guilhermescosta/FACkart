@@ -932,8 +932,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 1220.7771
-    damper: 195.32434
+    spring: 1220.7772
+    damper: 195.32436
     targetPosition: 0.5
   m_SuspensionDistance: 0.19620001
   m_ForceAppPointDistance: 0.71308947
@@ -1744,10 +1744,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 1279.9429
-    damper: 204.79085
+    spring: 1279.9426
+    damper: 204.79082
     targetPosition: 0.5
-  m_SuspensionDistance: 0.1962
+  m_SuspensionDistance: 0.19620001
   m_ForceAppPointDistance: 0.71308947
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -1916,6 +1916,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1677507941 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1377637832101378839, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1377637832250829910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1759563689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,10 +1966,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 927.27576
-    damper: 148.36412
+    spring: 927.2759
+    damper: 148.36414
     targetPosition: 0.5
-  m_SuspensionDistance: 0.19620001
+  m_SuspensionDistance: 0.1962
   m_ForceAppPointDistance: 0.71308947
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -2140,6 +2146,88 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0a43411aa05207f4b85a4f02fd64a0d3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 677fe651576448c47976d5ffdea299c1, type: 3}
+--- !u!1 &1967097704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1967097707}
+  - component: {fileID: 1967097706}
+  - component: {fileID: 1967097705}
+  m_Layer: 0
+  m_Name: CameraMr2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1967097705
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967097704}
+  m_Enabled: 1
+--- !u!20 &1967097706
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967097704}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0.5
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1967097707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967097704}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.20400146, y: 2.9979992, z: -9.063996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1677507941}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1971433728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,10 +2318,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 1572.004
-    damper: 251.52066
+    spring: 1572.0045
+    damper: 251.52074
     targetPosition: 0.5
-  m_SuspensionDistance: 0.19620003
+  m_SuspensionDistance: 0.19620001
   m_ForceAppPointDistance: 0.71308947
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -2337,91 +2425,35 @@ PrefabInstance:
       propertyPath: m_WheelMeshes.Array.data[3]
       value: 
       objectReference: {fileID: 1047273634}
-    - target: {fileID: 1377637832094470899, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
+    - target: {fileID: 1377637832094470887, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
         type: 3}
-      propertyPath: brakeTorque
-      value: 20000
+      propertyPath: m_SlipLimit
+      value: 0.95
       objectReference: {fileID: 0}
-    - target: {fileID: 1377637832094470909, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
+    - target: {fileID: 1377637832094470887, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377637832108130037, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377637832108130025, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377637832108130027, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377637832108130031, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377637832094935591, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_Cookie
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377637832094935591, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_TractionControl
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1377637832094935589, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
+    - target: {fileID: 1377637832094470887, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
         type: 3}
-      propertyPath: m_Cookie
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377637832094935589, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_DrawHalo
+      propertyPath: m_SteerHelper
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1377637832086194117, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
+    - target: {fileID: 1377637832094470887, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c617e7cbee0d2344a9b5e53116c43a2c, type: 2}
-    - target: {fileID: 1377637832086194117, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: c617e7cbee0d2344a9b5e53116c43a2c, type: 2}
-    - target: {fileID: 3814653959984637966, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 84074857565bdc94bb4eb6581d3a2898,
-        type: 2}
-    - target: {fileID: 1377637832104803091, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300052, guid: e6fec471c20b9d148b1f87910e67bea4, type: 3}
-    - target: {fileID: 1377637832103803347, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_SpeedType
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1377637832103803347, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
+    - target: {fileID: 1377637832094470887, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3682f7747d485db4586750a832808b31, type: 2}
-    - target: {fileID: 1377637832103803343, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
+      propertyPath: m_Downforce
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377637832094470887, guid: 55e23385d79f2e7489b42bb7c51a2a8d,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_CarDriveType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55e23385d79f2e7489b42bb7c51a2a8d, type: 3}

@@ -363,5 +363,19 @@ namespace UnityStandardAssets.Vehicles.Car
             }
             return false;
         }
+        public GameObject lanternaD;
+        public GameObject lanternaE;
+        public void Update()
+        {
+            if (m_WheelColliders[3].motorTorque <= 0)
+            {
+                lanternaD.active = true;
+                lanternaE.active = true;
+            }
+            else {
+                lanternaD.active = false;
+                lanternaE.active = false;
+            }
+        }
     }
 }
