@@ -29,7 +29,22 @@ namespace UnityStandardAssets.Vehicles.Car
             m_Car.Move(h, v, v, handbrake);
 #else
             m_Car.Move(h, v, v, 0f);
+            
 #endif
+
+            /* Este codigo cuida da lanterna dos carros.Ele foi colocado aqui devido a menos
+            erros e melhor otimização.
+            */
+            if (v < 0)
+            {
+                m_Car.lanternaD.SetActive(true);
+                m_Car.lanternaE.SetActive(true);
+            }
+            else
+            {
+                m_Car.lanternaD.SetActive(false);
+                m_Car.lanternaE.SetActive(false);
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace UnityStandardAssets.Vehicles.Car
     {
         [SerializeField] private CarDriveType m_CarDriveType = CarDriveType.FourWheelDrive;
         [SerializeField] private WheelCollider[] m_WheelColliders = new WheelCollider[4];
-        [SerializeField] private GameObject[] m_WheelMeshes = new GameObject[4];
+        
         [SerializeField] private WheelEffects[] m_WheelEffects = new WheelEffects[4];
         [SerializeField] private Vector3 m_CentreOfMassOffset;
         [SerializeField] private float m_MaximumSteerAngle;
@@ -54,21 +54,33 @@ namespace UnityStandardAssets.Vehicles.Car
         public float MaxSpeed{get { return m_Topspeed; }}
         public float Revs { get; private set; }
         public float AccelInput { get; private set; }
+        private WheelCollider[] m_Wheels;
+        public GameObject wheelShape;
 
         // Use this for initialization
         private void Start()
         {
             m_WheelMeshLocalRotations = new Quaternion[4];
-            for (int i = 0; i < 4; i++)
-            {
-                m_WheelMeshLocalRotations[i] = m_WheelMeshes[i].transform.localRotation;
-            }
             m_WheelColliders[0].attachedRigidbody.centerOfMass = m_CentreOfMassOffset;
 
             m_MaxHandbrakeTorque = float.MaxValue;
 
             m_Rigidbody = GetComponent<Rigidbody>();
             m_CurrentTorque = m_FullTorqueOverAllWheels - (m_TractionControl*m_FullTorqueOverAllWheels);
+            // Codigo para inicializar as o mesh de cada roda;
+            m_Wheels = m_WheelColliders;
+
+            for (int i = 0; i < m_Wheels.Length; ++i)
+            {
+                var wheel = m_Wheels[i];
+
+                // Create wheel shapes only when needed.
+                if (wheelShape != null)
+                {
+                    var ws = Instantiate(wheelShape);
+                    ws.transform.parent = wheel.transform;
+                }
+            }
         }
 
 
@@ -128,15 +140,6 @@ namespace UnityStandardAssets.Vehicles.Car
 
         public void Move(float steering, float accel, float footbrake, float handbrake)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                Quaternion quat;
-                Vector3 position;
-                m_WheelColliders[i].GetWorldPose(out position, out quat);
-                m_WheelMeshes[i].transform.position = position;
-                m_WheelMeshes[i].transform.rotation = quat;
-            }
-
             //clamp input values
             steering = Mathf.Clamp(steering, -1, 1);
             AccelInput = accel = Mathf.Clamp(accel, 0, 1);
@@ -367,14 +370,21 @@ namespace UnityStandardAssets.Vehicles.Car
         public GameObject lanternaE;
         public void Update()
         {
-            if (m_WheelColliders[3].motorTorque <= 0)
+            foreach (WheelCollider wheel in m_Wheels)
             {
-                lanternaD.active = true;
-                lanternaE.active = true;
-            }
-            else {
-                lanternaD.active = false;
-                lanternaE.active = false;
+                // A simple car where front wheels steer while rear ones drive.
+                // Update visual wheels if any.
+                if (wheelShape)
+                {
+                    Quaternion q;
+                    Vector3 p;
+                    wheel.GetWorldPose(out p, out q);
+
+                    // Assume that the only child of the wheelcollider is the wheel shape.
+                    Transform shapeTransform = wheel.transform.GetChild(0);
+                    shapeTransform.position = p;
+                    shapeTransform.rotation = q;
+                }
             }
         }
     }
