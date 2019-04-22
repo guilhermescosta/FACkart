@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Checkpoint : MonoBehaviour
 {
     public CarRaceStats _car;
     public int maxVoltas;
+    public Text txtVencedor;
+    public GameObject panel;
+
+
     //public Finish Fin;
     // Start is called before the first frame update
     void Start()
@@ -37,6 +42,9 @@ public class Checkpoint : MonoBehaviour
                 if (_car.voltas == maxVoltas){
                     Debug.Log(other.gameObject.name);
                     Debug.Log("Venceu a corrida");
+                    panel.SetActive(true);
+                    txtVencedor.text = other.gameObject.name + " venceu a corrida!";
+
                     // #######################################################
                     // ## Colocar aqui o codigo da condição de vitoria!!!!! ##
                     // #######################################################

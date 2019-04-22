@@ -37,9 +37,7 @@ public class RaceControl : MonoBehaviour {
         {
             goLight.enabled = false;
         }
-
     }
-
     public void RestartGame() {
         SceneManager.LoadScene(this.gameObject.scene.buildIndex);
     }
