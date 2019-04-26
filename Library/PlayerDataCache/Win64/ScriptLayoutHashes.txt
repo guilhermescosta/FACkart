@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/bazei/Desktop/Nova pasta (2)/github/Build/FACKart.exe
+C:/Users/aluno/Desktop/github/Nova pasta/FACKart.exe
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?

@@ -44,14 +44,18 @@ namespace UnityStandardAssets.Vehicles.Car
             }
             if (racecontrol.raceStart == true && player == 2)
             {
-                if (Input.GetKey(KeyCode.UpArrow))
+                if (Input.GetKey(KeyCode.Joystick1Button0))
                 {
                     v = 1;
                 }
-                if (Input.GetKey(KeyCode.DownArrow))
+                if (Input.GetKey(KeyCode.Joystick1Button2))
                 {
                     v = -1;
                 }
+
+                h = Input.GetAxis("Horizontal");
+
+                /* 
                 if (Input.GetKey(KeyCode.RightArrow))
                 {
                     h = 1;
@@ -60,10 +64,12 @@ namespace UnityStandardAssets.Vehicles.Car
                 {
                     h = -1;
                 }
-                if (Input.GetKey(KeyCode.Keypad0))
+                */
+                if (Input.GetKey(KeyCode.Joystick1Button1))
                 {
                     handbrake = 1;
                 }
+             
             }
                 f_Car.Move(h, v, v, handbrake);
             /* Este codigo cuida da lanterna dos carros.Ele foi colocado aqui devido a menos
