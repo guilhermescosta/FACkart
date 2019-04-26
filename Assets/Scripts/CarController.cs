@@ -37,7 +37,7 @@ namespace UnityStandardAssets.Vehicles.Car
         [SerializeField] private float m_SlipLimit;
         [SerializeField] private float m_BrakeTorque;
 
-        private Quaternion[] m_WheelMeshLocalRotations;
+        //private Quaternion[] m_WheelMeshLocalRotations;
         private Vector3 m_Prevpos, m_Pos;
         private float m_SteerAngle;
         private int m_GearNum;
@@ -60,11 +60,11 @@ namespace UnityStandardAssets.Vehicles.Car
         // Use this for initialization
         private void Start()
         {
-            m_WheelMeshLocalRotations = new Quaternion[4];
+            //m_WheelMeshLocalRotations = new Quaternion[4];
             m_WheelColliders[0].attachedRigidbody.centerOfMass = m_CentreOfMassOffset;
 
-            m_MaxHandbrakeTorque = float.MaxValue;
-
+            //m_MaxHandbrakeTorque = float.MaxValue;
+            
             m_Rigidbody = GetComponent<Rigidbody>();
             m_CurrentTorque = m_FullTorqueOverAllWheels - (m_TractionControl*m_FullTorqueOverAllWheels);
             // Codigo para inicializar as o mesh de cada roda;
@@ -72,13 +72,14 @@ namespace UnityStandardAssets.Vehicles.Car
 
             for (int i = 0; i < m_Wheels.Length; ++i)
             {
-                var wheel = m_Wheels[i];
+                var wheelWs = m_Wheels[i];
 
                 // Create wheel shapes only when needed.
                 if (wheelShape != null)
                 {
                     var ws = Instantiate(wheelShape);
-                    ws.transform.parent = wheel.transform;
+                    ws.transform.parent = wheelWs.transform;
+                    ws.transform.localScale = new Vector3(1, 1, 1);
                 }
             }
         }
@@ -158,9 +159,10 @@ namespace UnityStandardAssets.Vehicles.Car
 
             //Set the handbrake.
             //Assuming that wheels 2 and 3 are the rear wheels.
+            
             if (handbrake > 0f)
             {
-                var hbTorque = handbrake*m_MaxHandbrakeTorque;
+                float hbTorque = handbrake*m_MaxHandbrakeTorque;
                 m_WheelColliders[2].brakeTorque = hbTorque;
                 m_WheelColliders[3].brakeTorque = hbTorque;
             }
@@ -207,6 +209,10 @@ namespace UnityStandardAssets.Vehicles.Car
                     for (int i = 0; i < 4; i++)
                     {
                         m_WheelColliders[i].motorTorque = thrustTorque;
+                        if (thrustTorque > 0)
+                        {
+                            m_WheelColliders[i].brakeTorque = 0f;
+                        }
                     }
                     break;
 
@@ -233,7 +239,7 @@ namespace UnityStandardAssets.Vehicles.Car
                     m_WheelColliders[i].brakeTorque = 0f;
                     m_WheelColliders[i].motorTorque = -m_ReverseTorque*footbrake;
                 }
-            }
+            }       
         }
 
 
@@ -304,8 +310,8 @@ namespace UnityStandardAssets.Vehicles.Car
         }
 
         // crude traction control that reduces the power to wheel if the car is wheel spinning too much
-        private void TractionControl()
-        {
+        private void TractionControl() { }
+        /*{
             WheelHit wheelHit;
             switch (m_CarDriveType)
             {
@@ -335,27 +341,27 @@ namespace UnityStandardAssets.Vehicles.Car
                     AdjustTorque(wheelHit.forwardSlip);
                     break;
             }
-        }
+        }*/
 
 
-        private void AdjustTorque(float forwardSlip)
-        {
-            if (forwardSlip >= m_SlipLimit && m_CurrentTorque >= 0)
+            /*private void AdjustTorque(float forwardSlip)
             {
-                m_CurrentTorque -= 10 * m_TractionControl;
-            }
-            else
-            {
-                m_CurrentTorque += 10 * m_TractionControl;
-                if (m_CurrentTorque > m_FullTorqueOverAllWheels)
+                if (forwardSlip >= m_SlipLimit && m_CurrentTorque >= 0)
                 {
-                    m_CurrentTorque = m_FullTorqueOverAllWheels;
+                    m_CurrentTorque -= 10 * m_TractionControl;
                 }
-            }
-        }
+                else
+                {
+                    m_CurrentTorque += 10 * m_TractionControl;
+                    if (m_CurrentTorque > m_FullTorqueOverAllWheels)
+                    {
+                        m_CurrentTorque = m_FullTorqueOverAllWheels;
+                    }
+                }
+            }*/
 
 
-        private bool AnySkidSoundPlaying()
+            private bool AnySkidSoundPlaying()
         {
             for (int i = 0; i < 4; i++)
             {
@@ -387,5 +393,6 @@ namespace UnityStandardAssets.Vehicles.Car
                 }
             }
         }
+
     }
 }
