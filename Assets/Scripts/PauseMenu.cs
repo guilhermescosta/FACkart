@@ -34,7 +34,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (racecontrol.raceStart == true){
             if (stoped == true && Input.GetKeyDown(KeyCode.Escape)) {
-                Debug.Log("Pause");
                 menuPause.SetActive(true);
                 temp1 = carro1.velocity;
                 carro1.velocity = Vector3.zero;
@@ -52,13 +51,13 @@ public class PauseMenu : MonoBehaviour
                 }
                 stoped = false;
             }
-            if (stoped == false && Input.GetKeyDown(KeyCode.Space)) {
-                Debug.Log("Unpause");
+            /*Menu averto e jogo pausado
+             * if (stoped == false && Input.GetKeyDown(KeyCode.Space)) {
                 carro1.velocity = temp1;
                 carro2.velocity = temp2;
                 menuPause.SetActive(false);
                 stoped = true;
-            }
+            }*/
         }
     }
 }
