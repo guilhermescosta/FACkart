@@ -15,10 +15,12 @@ namespace UnityStandardAssets.Vehicles.Car
         private float v;
         private float h;
         private float handbrake;
+        public PauseMenu pause;
+        
 
-        private void FixedUpdate()
+        private void Update()
         {
-            if (racecontrol.raceStart == true && player == 1)
+            if (racecontrol.raceStart == true && player == 1 && pause.stoped == true)
             {
                 // pass the input to the car!
                 if (Input.GetKey(KeyCode.W))
@@ -42,7 +44,7 @@ namespace UnityStandardAssets.Vehicles.Car
                     handbrake = 1;
                 }
             }
-            if (racecontrol.raceStart == true && player == 2)
+            if (racecontrol.raceStart == true && player == 2 && pause.stoped == true)
             {
                 if (Input.GetKey(KeyCode.Joystick1Button0))
                 {
@@ -69,9 +71,8 @@ namespace UnityStandardAssets.Vehicles.Car
                 {
                     handbrake = 1;
                 }
-             
             }
-                f_Car.Move(h, v, v, handbrake);
+            f_Car.Move(h, v, v, handbrake);
             /* Este codigo cuida da lanterna dos carros.Ele foi colocado aqui devido a menos
                 erros e melhor otimiza��o.
             */
@@ -85,10 +86,10 @@ namespace UnityStandardAssets.Vehicles.Car
                     f_Car.lanternaD.SetActive(false);
                     f_Car.lanternaE.SetActive(false);
                 }
-                v = 0;
-                h = 0;
-                handbrake = 0;
+            v = 0;
+            h = 0;
+            handbrake = 0;
 
-            }
+        }
     }
 }

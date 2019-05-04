@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/aluno/Desktop/github/Nova pasta/FACKart.exe
+C:/Users/bazei/Desktop/Nova pasta (2)/github/Build/FACKart.exe
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?
@@ -117,7 +117,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 42396cadf10b77f3a077293197e93634 Assembly-CSharp.dll:UnityStandardAssets.Vehicles.Car.WheelEffects
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-583675394fc23df0c7046ab1fa074eb4 Assembly-CSharp.dll:UnityStandardAssets.Vehicles.Car.CarUserControl
+108bbfe9350c364d18870765979d4879 Assembly-CSharp.dll:UnityStandardAssets.Vehicles.Car.CarUserControl
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
 a1be9ef287ad7cc671105f616b187e15 Assembly-CSharp.dll:.EasySuspension
@@ -172,3 +172,5 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 493135dab74f5012a21c1476d8d4d35f Assembly-CSharp.dll:.Finish
+b1c6b8d4800d5fd9eb631a77753bf701 Assembly-CSharp.dll:.PauseMenu
+1397f02611f5e0116383951dcef618af Assembly-CSharp.dll:.PauseScript
