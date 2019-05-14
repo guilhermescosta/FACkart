@@ -10,17 +10,19 @@ public class PauseScript : MonoBehaviour
     public Button btnContinue;
     public Button btnReset;
     public Button btnQuit;
+    public Button btnMainMenu;
     private ColorBlock colors;
     public RaceControl race;
     // Start is called before the first frame update
     void Start()
     {
-        selec = 0;
+        selec = -1;
         colors = btnContinue.colors;
         colors.highlightedColor = new Color32(255, 0 , 0, 255);
         btnContinue.colors = colors;
         btnQuit.colors = colors;
         btnReset.colors = colors;
+        btnMainMenu.colors = colors;
     }
 
     // Update is called once per frame
@@ -29,21 +31,18 @@ public class PauseScript : MonoBehaviour
         if (pause.stoped==false) {
             if (Input.GetKeyDown(KeyCode.DownArrow)) {
                 selec++;
-                if (selec > 2)
+                if (selec > 3)
                 {
                     selec = 0;
                 }
-                Debug.Log(selec);
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 selec--;
                 if (selec < 0)
                 {
-                    selec = 2;
-                }
-                Debug.Log(selec);
-                
+                    selec = 3;
+                }                
             }
             
             switch (selec) {
@@ -53,6 +52,7 @@ public class PauseScript : MonoBehaviour
                     colors.normalColor = Color.white;
                     btnReset.colors = colors;
                     btnQuit.colors = colors;
+                    btnMainMenu.colors = colors;
                     if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
                     {
                         pause.Unpause();
@@ -65,18 +65,33 @@ public class PauseScript : MonoBehaviour
                     colors.normalColor = Color.white;
                     btnContinue.colors = colors;
                     btnQuit.colors = colors;
+                    btnMainMenu.colors = colors;
                     if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
                     {
                         race.RestartGame();
                     }
                     break;
                 case 2:
+                    colors = btnMainMenu.colors;
+                    colors.normalColor = Color.red;
+                    btnMainMenu.colors = colors;
+                    colors.normalColor = Color.white;
+                    btnQuit.colors = colors;
+                    btnReset.colors = colors;
+                    btnContinue.colors = colors;
+                    if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
+                    {
+                        race.MainMenu();
+                    }
+                    break;
+                case 3:
                     colors = btnContinue.colors;
                     colors.normalColor = Color.red;
                     btnQuit.colors = colors;
                     colors.normalColor = Color.white;
                     btnReset.colors = colors;
                     btnContinue.colors = colors;
+                    btnMainMenu.colors = colors;
                     if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
                     {
                         pause.Quit();

@@ -16,7 +16,9 @@ public class RaceControl : MonoBehaviour {
 	void Start () {
         raceStart = false;
 	}
-	
+    public void MainMenu() {
+        SceneManager.LoadScene(0);
+    }
 	// Update is called once per frame
 	void Update () {
         goTimer += Time.deltaTime;
