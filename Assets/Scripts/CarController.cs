@@ -294,7 +294,7 @@ namespace UnityStandardAssets.Vehicles.Car
                     // if they do it can lead to some strange audio artefacts
                     if (!AnySkidSoundPlaying())
                     {
-                        m_WheelEffects[i].PlayAudio();
+                        //m_WheelEffects[i].PlayAudio();
                     }
                     continue;
                 }
@@ -302,7 +302,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 // if it wasnt slipping stop all the audio
                 if (m_WheelEffects[i].PlayingAudio)
                 {
-                    m_WheelEffects[i].StopAudio();
+                    //m_WheelEffects[i].StopAudio();
                 }
                 // end the trail generation
                 m_WheelEffects[i].EndSkidTrail();

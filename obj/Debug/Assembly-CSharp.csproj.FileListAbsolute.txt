@@ -1,0 +1,2 @@
+C:\Users\bazei\Desktop\Nova pasta (2)\github\FACkart\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\bazei\Desktop\Nova pasta (2)\github\FACkart\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
