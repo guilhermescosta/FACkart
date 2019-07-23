@@ -6,10 +6,11 @@ public class Carro : MonoBehaviour
 {
     public WheelCollider[] ColisoresRodas;
     public WheelEffects[] efeitoRoda;
-    public GameObject[] luzfreio;
-    public GameObject[] luzre;
+    public GameObject Volante;
+    private bool re;
     private AudioSource m_AudioSource;
     public Vector3 centroMassa;
+    public Vector3 tamanhoRoda;
     private float VirarRodas;
     private float lado;
     private float frente;
@@ -30,6 +31,7 @@ public class Carro : MonoBehaviour
     private float marchas;
     public int qtdMarchas;
     private bool PlayingAudio;
+    
     public float rotacao { get; private set; }
     public void mover(float lado, float frente, bool freioMao) {
         this.freioMao = freioMao;
@@ -43,28 +45,26 @@ public class Carro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ColisoresRodas[0].attachedRigidbody.centerOfMass = centroMassa;
-        cc = 0;
-        potenciaFreio *= -1;
-        rbCarro = this.gameObject.GetComponent<Rigidbody>();
-        //potencia *= 100;
         foreach (WheelCollider wheel in ColisoresRodas) {
             if (FormatoRoda != null)
             {
                 var ws = Instantiate(FormatoRoda);
                 ws.transform.parent = wheel.transform;
-                ws.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);
+                ws.transform.localScale = tamanhoRoda;
             }
         }
+        ColisoresRodas[0].attachedRigidbody.centerOfMass = centroMassa;
+        cc = 0;
+        potenciaFreio *= -1;
+        rbCarro = this.gameObject.GetComponent<Rigidbody>();
+        //potencia *= 100;
+        
         ff = ColisoresRodas[0].forwardFriction;
         fs = ColisoresRodas[0].sidewaysFriction;
         Revs = 950;
         marchas = 1;
         trocandomarchas = false;
-        luzfreio[0].SetActive(false);
-        luzfreio[1].SetActive(false);
-        luzre[0].SetActive(false);
-        luzre[1].SetActive(false);
+        re = false;
         m_AudioSource = GetComponent<AudioSource>();
     }
     public void PlayAudio()
@@ -78,7 +78,7 @@ public class Carro : MonoBehaviour
         PlayingAudio = false;
     }
     void Update()
-    {
+    {   
         
         foreach (WheelCollider wheel in ColisoresRodas)
         {
@@ -111,8 +111,7 @@ public class Carro : MonoBehaviour
         if (freioMao == true)
         {
             // frieo de mão puxado
-            luzfreio[0].SetActive(true);
-            luzfreio[1].SetActive(true);
+            
             //ColisoresRodas[2].motorTorque = 0;
             //ColisoresRodas[3].motorTorque = 0;
             ColisoresRodas[2].brakeTorque = 2000000;
@@ -126,10 +125,7 @@ public class Carro : MonoBehaviour
         if (frente > 0 && freioMao==false)
         {
             // andando para frente
-            luzre[0].SetActive(false);
-            luzre[1].SetActive(false);
-            luzfreio[0].SetActive(false);
-            luzfreio[1].SetActive(false);
+            re=false;
             ColisoresRodas[2].brakeTorque = 0;
             ColisoresRodas[3].brakeTorque = 0;
             ColisoresRodas[0].brakeTorque = 0;
@@ -137,7 +133,7 @@ public class Carro : MonoBehaviour
             ColisoresRodas[2].motorTorque = frente * (potencia / 2);
             ColisoresRodas[3].motorTorque = frente * (potencia / 2);
             Revs += potencia / 4;
-            if (luzre[0].activeSelf == true && Revs > 950) {
+            if (re == true && Revs > 950) {
                 Revs += potenciaFreio;
             }
         }
@@ -146,10 +142,7 @@ public class Carro : MonoBehaviour
             if (velocidadeAtual > 1 && Vector3.Angle(transform.forward, rbCarro.velocity) < 50f)
             {
                 //freiando
-                luzre[0].SetActive(false);
-                luzre[1].SetActive(false);
-                luzfreio[0].SetActive(true);
-                luzfreio[1].SetActive(true);
+                re=false;
                 ColisoresRodas[2].motorTorque = 0;
                 ColisoresRodas[3].motorTorque = 0;
                 ColisoresRodas[0].brakeTorque = frente * potenciaFreio;
@@ -163,8 +156,7 @@ public class Carro : MonoBehaviour
             else if (freioMao==false){
                 // dando re
                 marchas = 1;
-                luzre[0].SetActive(true);
-                luzre[1].SetActive(true);
+                re = true;
                 ColisoresRodas[2].brakeTorque = 0;
                 ColisoresRodas[3].brakeTorque = 0;
                 ColisoresRodas[0].brakeTorque = 0;
@@ -182,10 +174,7 @@ public class Carro : MonoBehaviour
         else if (frente == 0 && freioMao==false)
         {
             // parado
-            luzre[0].SetActive(false);
-            luzre[1].SetActive(false);
-            luzfreio[0].SetActive(false);
-            luzfreio[1].SetActive(false);
+            re=false;
             ColisoresRodas[2].motorTorque = 0;
             ColisoresRodas[3].motorTorque = 0;
             ColisoresRodas[0].brakeTorque = 10;
@@ -201,20 +190,24 @@ public class Carro : MonoBehaviour
         if (lado > 0 && ColisoresRodas[0].steerAngle <= 25) {
             ColisoresRodas[0].steerAngle += 2.5f;
             ColisoresRodas[1].steerAngle += 2.5f;
+            Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z - 5);
         }
         if (lado < 0 && ColisoresRodas[0].steerAngle >= -25)
         {
             ColisoresRodas[0].steerAngle -= 2.5f;
             ColisoresRodas[1].steerAngle -= 2.5f;
+            Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z + 5);
         }
         if (lado == 0 && ColisoresRodas[0].steerAngle > 0) {
             ColisoresRodas[1].steerAngle --;
             ColisoresRodas[0].steerAngle--;
+            Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z + 2.5f);
         }
         if (lado == 0 && ColisoresRodas[0].steerAngle < 0)
         {
             ColisoresRodas[1].steerAngle++;
             ColisoresRodas[0].steerAngle++;
+            Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z - 2.5f);
         }
 
         // controla o quao liso sao os pneus
@@ -224,9 +217,9 @@ public class Carro : MonoBehaviour
             ColisoresRodas[2].forwardFriction = ff;
             ColisoresRodas[3].forwardFriction = ff;
         }
-        if (velocidadeAtual >= velMaxima/2 && ff.stiffness != 2)
+        if (velocidadeAtual >= velMaxima/2 && ff.stiffness != 3)
         {
-            ff.stiffness = 2;
+            ff.stiffness = 3;
             ColisoresRodas[2].forwardFriction = ff;
             ColisoresRodas[3].forwardFriction = ff;
         }
@@ -252,15 +245,15 @@ public class Carro : MonoBehaviour
         }
 
         // Controla o som do carro, as rotações do motor nao inteferem na fisica dele
-        if (Revs >= rotacaoMaxima &&  luzre[0].activeSelf == false && marchas < qtdMarchas) {
+        if (Revs >= rotacaoMaxima &&  re == false && marchas < qtdMarchas) {
             trocandomarchas = true;
             marchas++;
         }
-        if (Revs >= rotacaoMaxima && luzre[0].activeSelf == false && marchas == qtdMarchas)
+        if (Revs >= rotacaoMaxima && re == false && marchas == qtdMarchas)
         {
             Revs -= rotacaoMaxima/20;
         }
-        if (Revs >= rotacaoMaxima && luzre[0].activeSelf == true) {
+        if (Revs >= rotacaoMaxima && re == true) {
             Revs = rotacaoMaxima;
         }
         if (trocandomarchas == true) {
