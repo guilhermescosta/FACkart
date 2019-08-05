@@ -21,6 +21,7 @@ public class Carro : MonoBehaviour
     public float potencia;
     private Rigidbody rbCarro;
     private float velocidadeAtual { get { return rbCarro.velocity.magnitude * 2.23693629f; } }
+    public float velocidadePassar { get; private set; }
     public float potenciaFreio;
     public float velMaxima;
     private WheelFrictionCurve ff;
@@ -53,7 +54,7 @@ public class Carro : MonoBehaviour
                 ws.transform.localScale = tamanhoRoda;
             }
         }
-        ColisoresRodas[0].attachedRigidbody.centerOfMass = centroMassa;
+        
         cc = 0;
         potenciaFreio *= -1;
         rbCarro = this.gameObject.GetComponent<Rigidbody>();
@@ -79,7 +80,8 @@ public class Carro : MonoBehaviour
     }
     void Update()
     {   
-        
+        ColisoresRodas[0].attachedRigidbody.centerOfMass = centroMassa;
+        velocidadePassar = velocidadeAtual;
         foreach (WheelCollider wheel in ColisoresRodas)
         {
             Quaternion q;

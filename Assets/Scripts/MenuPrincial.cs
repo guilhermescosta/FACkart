@@ -7,14 +7,16 @@ public class MenuPrincial : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject mCamera;
-    
+    public int cena;
     void Start()
     {
         
     }
-    public void StartGame(){
-        SceneManager.LoadScene(1);
+    public void carregaJogo(int numeroPlayers){
+        PlayerPrefs.SetInt("qtdplayer",numeroPlayers);
+        SceneManager.LoadScene(cena);
     }
+    
     public void Quit() {
         Application.Quit();
     }
