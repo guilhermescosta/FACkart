@@ -5,7 +5,7 @@ public class CarUserControl : MonoBehaviour
 {
     //public CarController f_Car; // the car controller we want to use
     public Carro carro;
-    //public RaceControl racecontrol;
+    public RaceControl racecontrol;
     public int player;
     private float v;
     private float h;
@@ -13,7 +13,7 @@ public class CarUserControl : MonoBehaviour
     public GameObject cameraFrente;
     public GameObject CameraTras;
     private float tempodesvira;
-    //public PauseMenu pause;
+    public PauseMenu pause;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class CarUserControl : MonoBehaviour
     }
     private void Update()
     {
-        if (/*racecontrol.raceStart == true && */player == 1/* && pause.stoped == true*/)
+        if (racecontrol.raceStart == true && player == 1 && pause.stoped == true)
         {
             if (Input.GetKey(KeyCode.W))
             {

@@ -84,7 +84,7 @@ public class CarAudio : MonoBehaviour
         source.volume = 0;
         source.loop = true;
 
-        source.time = UnityEngine.Random.Range(0f, clip.length);
+        source.time = UnityEngine.Random.Range(0f, clip.length-0.5f);
         source.Play();
         source.minDistance = 5;
         source.maxDistance = maxRolloffDistance;
