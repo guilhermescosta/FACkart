@@ -27,6 +27,7 @@ public class Carro : MonoBehaviour
     public float velMaxima;
     private WheelFrictionCurve ff;
     private WheelFrictionCurve fs;
+    private float Zvolante;
 
     public float Revs { get; private set; }
     private int cc;
@@ -56,7 +57,7 @@ public class Carro : MonoBehaviour
                 ws.transform.localScale = tamanhoRoda;
             }
         }
-        
+        ColisoresRodas[0].attachedRigidbody.centerOfMass = centroMassa;
         cc = 0;
         potenciaFreio *= -1;
         rbCarro = this.gameObject.GetComponent<Rigidbody>();
@@ -82,8 +83,9 @@ public class Carro : MonoBehaviour
     }
     void Update()
     {
+        
         if (pauseMenu.stoped==true) {
-            ColisoresRodas[0].attachedRigidbody.centerOfMass = centroMassa;
+            
             velocidadePassar = velocidadeAtual;
             foreach (WheelCollider wheel in ColisoresRodas)
             {
@@ -195,26 +197,41 @@ public class Carro : MonoBehaviour
             if (lado > 0 && ColisoresRodas[0].steerAngle <= 25) {
                 ColisoresRodas[0].steerAngle += 2.5f;
                 ColisoresRodas[1].steerAngle += 2.5f;
-                Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z - 5);
             }
             if (lado < 0 && ColisoresRodas[0].steerAngle >= -25)
             {
                 ColisoresRodas[0].steerAngle -= 2.5f;
                 ColisoresRodas[1].steerAngle -= 2.5f;
-                Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z + 5);
             }
             if (lado == 0 && ColisoresRodas[0].steerAngle > 0) {
                 ColisoresRodas[1].steerAngle--;
                 ColisoresRodas[0].steerAngle--;
-                Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z + 2.5f);
             }
             if (lado == 0 && ColisoresRodas[0].steerAngle < 0)
             {
                 ColisoresRodas[1].steerAngle++;
                 ColisoresRodas[0].steerAngle++;
-                Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z - 2.5f);
             }
-
+            if (lado < 0 &&  Zvolante< 10) {
+                Volante.transform.eulerAngles=new Vector3(Volante.transform.eulerAngles.x,Volante.transform.eulerAngles.y,Volante.transform.eulerAngles.z+1);
+                Zvolante++;
+            }
+            if (lado > 0 && Zvolante > -10)
+            {
+                Zvolante--;
+                Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z - 1);
+            }
+            if (lado == 0 && Zvolante > 0)
+            {
+                Zvolante -=0.5f;
+                Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z - 0.5f);
+            }
+            if (lado == 0 && Zvolante < 0)
+            {
+                Zvolante +=0.5f;
+                Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z + 0.5f);
+            }
+            Debug.Log(Zvolante);
             // controla o quao liso sao os pneus
             if (velocidadeAtual < velMaxima / 2 && ff.stiffness != 4) {
 
