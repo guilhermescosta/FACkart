@@ -15,50 +15,69 @@ public class RaceControl : MonoBehaviour {
     public int totalLaps;
 
     private int qtdPlayer;
-    public GameObject playersolo;
+ 
     public GameObject playerdupla1;
     public GameObject playerdupla2;
 
 
     public Text txtvelocidadeplayer1;
     public Text txtvelocidadeplayer2;
-    public Carro carrosolo;
+   
     public Carro carrodupla1;
     public Carro carrodupla2;
-    private bool dupla;
 
+    public Text txtPosPlayer1;
+    public Text txtPosPlayer2;
 
-	// Use this for initialization
-	void Start () {
-        qtdPlayer = PlayerPrefs.GetInt("qtdplayer");
+    private int check1;
+    private int check2;
+    public VerPrimeiro[] Verficadores;
+    // Use this for initialization
+    void Start () {
         raceStart = false;
-        if (qtdPlayer == 1){
-            playersolo.SetActive(true);
-            playerdupla1.SetActive(false);
-            playerdupla2.SetActive(false);
-            dupla = false;
-            txtvelocidadeplayer2.enabled=false;
-        } else if (qtdPlayer==2){
-            playersolo.SetActive(false);
-            playerdupla1.SetActive(true);
-            playerdupla2.SetActive(true);
-            dupla = true;
-        }
+        
         tempoLargada=3;
 	}
+    public void ResetaVerificadores(bool v) {
+        if (v == true)
+        {
+            foreach (VerPrimeiro verficador in Verficadores)
+            {
+                verficador.Reseta1();
+            }
+        }
+        else if (v == false) {
+            foreach (VerPrimeiro verficador in Verficadores)
+            {
+                verficador.Reseta2();
+            }
+        }
+    }
     public void MainMenu() {
         SceneManager.LoadScene(0);
     }
+    public void playerUmFirst() {
+        check1++;
+    }
+    public void playerDoisFisrt() {
+        check2++;
+    }
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (dupla == false){
-            txtvelocidadeplayer1.text=carrosolo.velocidadePassar.ToString("f0");
-        } else if (dupla == true){
-            txtvelocidadeplayer1.text=carrodupla1.velocidadePassar.ToString("f0");
-            txtvelocidadeplayer2.text=carrodupla2.velocidadePassar.ToString("f0");
-        }
+        
+        txtvelocidadeplayer1.text=carrodupla1.velocidadePassar.ToString("f0");
+        txtvelocidadeplayer2.text=carrodupla2.velocidadePassar.ToString("f0");
         if (tempoLargada>0){
             tempoLargada-=Time.deltaTime;
+        }
+        if (check1 >= check2)
+        {
+            txtPosPlayer1.text = "1/2";
+            txtPosPlayer2.text = "2/2";
+        }
+        else if (check2 > check1) {
+            txtPosPlayer1.text = "2/2";
+            txtPosPlayer2.text = "1/2";
         }
         txtTempoLargada.text=tempoLargada.ToString("f0");
         goTimer += Time.deltaTime;

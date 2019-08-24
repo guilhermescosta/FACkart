@@ -9,7 +9,7 @@ public class Checkpoint : MonoBehaviour
     public int maxVoltas;
     public Text txtVencedor;
     public GameObject panel;
-
+    public RaceControl controlador;
 
     //public Finish Fin;
     // Start is called before the first frame update
@@ -39,6 +39,14 @@ public class Checkpoint : MonoBehaviour
 
             if (this.gameObject.name == "finishLine"){
                 _car.incrementoVoltas();
+                if (other.gameObject.name == "Player_1")
+                {
+                    controlador.ResetaVerificadores(true);
+                }
+                else if (other.gameObject.name == "Player_2")
+                {
+                    controlador.ResetaVerificadores(false);
+                }
                 if (_car.voltas == maxVoltas){
                     Debug.Log(other.gameObject.name);
                     Debug.Log("Venceu a corrida");

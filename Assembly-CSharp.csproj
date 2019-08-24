@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\Scripts\RaceControl.cs" />
     <Compile Include="Assets\Scripts\SkidTrail.cs" />
+    <Compile Include="Assets\Scripts\VerPrimeiro.cs" />
     <Compile Include="Assets\Scripts\WheelDrive.cs" />
     <Compile Include="Assets\Scripts\WheelEffects.cs" />
     <Compile Include="Assets\Veihicles\mr2\Suspension.cs" />

@@ -231,7 +231,7 @@ public class Carro : MonoBehaviour
                 Zvolante +=0.5f;
                 Volante.transform.eulerAngles = new Vector3(Volante.transform.eulerAngles.x, Volante.transform.eulerAngles.y, Volante.transform.eulerAngles.z + 0.5f);
             }
-            Debug.Log(Zvolante);
+            
             // controla o quao liso sao os pneus
             if (velocidadeAtual < velMaxima / 2 && ff.stiffness != 4) {
 
