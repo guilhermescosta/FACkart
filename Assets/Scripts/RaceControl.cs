@@ -35,7 +35,11 @@ public class RaceControl : MonoBehaviour {
     // Use this for initialization
     void Start () {
         raceStart = false;
-        
+        GameObject[] checkfirst = GameObject.FindGameObjectsWithTag("Verificadores");
+        Verficadores = new VerPrimeiro[checkfirst.Length];
+        for (int f = 0; f < checkfirst.Length; f++) {
+            Verficadores[f] = checkfirst[f].GetComponent<VerPrimeiro>();
+        }
         tempoLargada=3;
 	}
     public void ResetaVerificadores(bool v) {

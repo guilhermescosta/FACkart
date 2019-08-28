@@ -11,6 +11,7 @@ TagManager:
   - CarColl
   - Player1
   - Player2
+  - Verificadores
   layers:
   - Default
   - TransparentFX
