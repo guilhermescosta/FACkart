@@ -4807,7 +4807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &181101880
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7834,7 +7834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &270297400
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10080,7 +10080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 37, y: 7}
+  m_AnchoredPosition: {x: -208, y: 7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &358113797
@@ -14405,7 +14405,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.499
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -25595,7 +25595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &737545964
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33021,7 +33021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &860352312
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36748,7 +36748,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.499
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -38418,6 +38418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1060949345}
   - component: {fileID: 1060949344}
+  - component: {fileID: 1060949343}
   m_Layer: 0
   m_Name: CameraTras
   m_TagString: MainCamera
@@ -38425,6 +38426,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!81 &1060949343
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060949342}
+  m_Enabled: 1
 --- !u!20 &1060949344
 Camera:
   m_ObjectHideFlags: 0
@@ -38444,9 +38453,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5
+    x: 0
     y: 0
-    width: 0.5
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -46755,16 +46764,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378260416}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 295493287}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 12, y: 7}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 11, y: 7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1378260418
@@ -55216,6 +55225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1521348941}
   - component: {fileID: 1521348940}
+  - component: {fileID: 1521348939}
   m_Layer: 0
   m_Name: CameraFrente
   m_TagString: MainCamera
@@ -55223,6 +55233,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &1521348939
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521348938}
+  m_Enabled: 1
 --- !u!20 &1521348940
 Camera:
   m_ObjectHideFlags: 0
@@ -55242,9 +55260,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5
+    x: 0
     y: 0
-    width: 0.5
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -61847,6 +61865,18 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1275435376306896102, guid: 2a8ee514183f6d3408ca8fb533891ce1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275435377808543238, guid: 2a8ee514183f6d3408ca8fb533891ce1,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Finalizado!
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8ee514183f6d3408ca8fb533891ce1, type: 3}
 --- !u!224 &1776929019 stripped
@@ -65073,7 +65103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1891191550
 RectTransform:
   m_ObjectHideFlags: 0
